@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WarStreet Digital Gift Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#f6f4ef;
+  font-family:'Poppins',sans-serif;
+  color:#222;
+}
+h1,h2{
+  font-family:'Montserrat',sans-serif;
+}
+.hero{
+  background:linear-gradient(135deg,#b9935a,#1e1e1e);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
+  position:relative;
+}
+.hero h1{
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+.tagline{
+  max-width:700px;
+  margin:0 auto;
+  font-size:1rem;
+  opacity:0.95;
+}
+.socials{
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:none;
+  flex-direction:column;
+  gap:10px;
+}
+.hero.active .socials{
+  display:flex;
+}
+.socials a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.container{
+  max-width:750px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:35px 25px;
+  margin-bottom:30px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.section-title{
+  text-align:center;
+  font-weight:600;
+  margin-bottom:15px;
+}
+
+.slideshow{
+  overflow:hidden;
+  border-radius:14px;
+  height:280px;
+  position:relative;
+}
+.slides{
+  display:flex;
+  transition:transform 0.6s ease;
+}
+.slides img{
+  width:100%;
+  object-fit:cover;
+}
+
+.pick-btn{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  background:#1e1e1e;
+  color:#fff;
+  border-radius:8px;
+  font-family:'Montserrat',sans-serif;
+  cursor:pointer;
+}
+
+.host-row{
+  margin-top:20px;
+  display:none;
+  overflow-x:auto;
+  gap:12px;
+}
+.host-card{
+  min-width:140px;
+  background:#f2f2f2;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  cursor:pointer;
+  flex-shrink:0;
+}
+.host-card img{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:6px;
+}
+
+audio{
+  width:100%;
+  margin-top:10px;
+}
+
+footer{
+  text-align:center;
+  margin:50px 0 20px;
+  font-size:0.9rem;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero" onclick="this.classList.toggle('active')">
+  <h1>WarStreet Digital Gift Store</h1>
+  <div class="tagline">
+    Our memories are perfect for birthdays, weddings, roora/lobola, graduations, valentines, corporate gifts, personalised gifts, and more.
+  </div>
+  <div class="socials">
+    <a href="https://www.tiktok.com/@warstreet_studios.zw">TikTok</a>
+    <a href="https://www.youtube.com/@warstreet_studios">YouTube</a>
+    <a href="https://www.instagram.com/warstreet_studios">Instagram</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- SLIDESHOW -->
+<div class="card">
+  <div class="section-title">Experience the Feeling</div>
+  <div class="slideshow">
+    <div class="slides" id="slides">
+      <img src="slide1.jpg">
+      <img src="slide2.jpg">
+      <img src="slide3.jpg">
+      <img src="slide4.jpg">
+      <img src="slide5.jpg">
+      <img src="slide6.jpg">
+      <img src="slide7.jpg">
+      <img src="slide8.jpg">
+    </div>
+  </div>
+</div>
+
+<!-- VOICE.IT -->
+<div class="card">
+<h2>Voice.it Memory — $5</h2>
+<p>Single audio message. Optional cover art +$5.</p>
+<audio controls>
+<source src="voiceit_sample.mp3" type="audio/mpeg">
+</audio>
+<button class="pick-btn" onclick="showHosts('voiceit')">Pick Memory</button>
+<div class="host-row" id="voiceit"></div>
+</div>
+
+<!-- STORY -->
+<div class="card">
+<h2>Story Memories — $15</h2>
+<p>Slideshow (5 images included), digital letter, audio.</p>
+<a href="story_sample.html" target="_blank">View Sample</a>
+<button class="pick-btn" onclick="showHosts('story')">Pick Memory</button>
+<div class="host-row" id="story"></div>
+</div>
+
+<!-- LEGACY -->
+<div class="card">
+<h2>Legacy Video Memory — $30–$50</h2>
+<p>Video, digital letter, audio.</p>
+<a href="legacy_sample.html" target="_blank">View Sample</a>
+<button class="pick-btn" onclick="showHosts('legacy')">Pick Memory</button>
+<div class="host-row" id="legacy"></div>
+</div>
+
+<!-- SONGS -->
+<div class="card">
+<h2>Personalized Songs — $20–$50</h2>
+<audio controls>
+<source src="song1.mp3" type="audio/mpeg">
+</audio>
+<audio controls>
+<source src="song2.mp3" type="audio/mpeg">
+</audio>
+<button class="pick-btn" onclick="showHosts('songs')">Pick Memory</button>
+<div class="host-row" id="songs"></div>
+</div>
+
+<!-- SHARED -->
+<div class="card">
+<h2>Shared Live Photo Album — $20</h2>
+<p>Live digital gallery for friends and family.</p>
+<button class="pick-btn" onclick="showHosts('shared')">Pick Memory</button>
+<div class="host-row" id="shared"></div>
+</div>
+
+</div>
+
+<footer>
+Powered by WarStreet Experience Model — Shopystreet Signature
+</footer>
+
+<script>
+let slideIndex=0;
+setInterval(()=>{
+slideIndex=(slideIndex+1)%8;
+document.getElementById('slides').style.transform=`translateX(-${slideIndex*100}%)`;
+},3500);
+
+const hostData={
+voiceit:[
+{name:"Gift Card",price:3,img:"giftcard.jpg"},
+{name:"Gift Bag/Tag",price:3,img:"giftbag.jpg"},
+{name:"Audio Gift Card",price:4,img:"audiocard.jpg"},
+{name:"Necklace Card",price:4,img:"necklace.jpg"},
+{name:"Link",price:0,img:"link.jpg"}
+],
+story:[
+{name:"QR Hoodie",price:8,img:"hoodie.jpg"},
+{name:"QR T-Shirt",price:8,img:"tshirt.jpg"},
+{name:"Smart Frame",price:15,img:"frame.jpg"},
+{name:"Gift Card",price:3,img:"giftcard.jpg"},
+{name:"Gift Bag/Tag",price:3,img:"giftbag.jpg"},
+{name:"Link",price:0,img:"link.jpg"}
+],
+legacy:[
+{name:"QR Tribute Frame",price:15,img:"frame.jpg"},
+{name:"QR Keepsake Box",price:15,img:"box.jpg"},
+{name:"QR Hoodie",price:8,img:"hoodie.jpg"},
+{name:"Gift Card",price:3,img:"giftcard.jpg"},
+{name:"Link",price:0,img:"link.jpg"}
+],
+songs:[
+{name:"QR Vinyl Frame",price:15,img:"vinyl.jpg"},
+{name:"QR Hoodie",price:8,img:"hoodie.jpg"},
+{name:"QR T-Shirt",price:8,img:"tshirt.jpg"},
+{name:"Gift Card",price:3,img:"giftcard.jpg"},
+{name:"Link",price:0,img:"link.jpg"}
+],
+shared:[
+{name:"QR Card",price:3,img:"giftcard.jpg"},
+{name:"QR Frame",price:15,img:"frame.jpg"},
+{name:"Link",price:0,img:"link.jpg"}
+]
+};
+
+const memoryPrices={
+voiceit:5,
+story:15,
+legacy:40,
+songs:35,
+shared:20
+};
+
+function showHosts(tier){
+document.querySelectorAll('.host-row').forEach(r=>r.style.display='none');
+const row=document.getElementById(tier);
+row.innerHTML="";
+hostData[tier].forEach(h=>{
+const div=document.createElement('div');
+div.className="host-card";
+div.innerHTML=`<img src="${h.img}"><div>${h.name}<br>$${h.price}</div>`;
+div.onclick=()=>{
+const msg=`I want ${tier} Memory ($${memoryPrices[tier]}) with ${h.name} ($${h.price})`;
+window.open(`https://wa.me/263779388560?text=${encodeURIComponent(msg)}`);
+};
+row.appendChild(div);
+});
+row.style.display="flex";
+}
+</script>
+
+</body>
+</html>
