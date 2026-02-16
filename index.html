@@ -74,7 +74,7 @@ h1,h2{
 .slideshow{
   overflow:hidden;
   border-radius:14px;
-  height:280px;
+  height:320px;
   position:relative;
 }
 .slides{
@@ -83,6 +83,7 @@ h1,h2{
 }
 .slides img{
   width:100%;
+  height:100%;
   object-fit:cover;
 }
 
@@ -102,25 +103,32 @@ h1,h2{
   display:none;
   overflow-x:auto;
   gap:12px;
+  flex-wrap: nowrap;
 }
 .host-card{
-  min-width:140px;
+  min-width:160px;
+  max-width:160px;
+  height:260px;
   background:#f2f2f2;
   padding:10px;
   border-radius:10px;
   text-align:center;
   cursor:pointer;
   flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 }
 .host-card img{
   width:100%;
+  height:120px;
   border-radius:8px;
   margin-bottom:6px;
+  object-fit:cover;
 }
-
 audio{
   width:100%;
-  margin-top:10px;
+  margin-top:auto;
 }
 
 footer{
@@ -139,9 +147,9 @@ footer{
     Our memories are perfect for birthdays, weddings, roora/lobola, graduations, valentines, corporate gifts, personalised gifts, and more.
   </div>
   <div class="socials">
-    <a href="https://www.tiktok.com/@warstreet_studios.zw">TikTok</a>
-    <a href="https://www.youtube.com/@warstreet_studios">YouTube</a>
-    <a href="https://www.instagram.com/warstreet_studios">Instagram</a>
+    <a href="https://www.tiktok.com/@warstreet_studios.zw" target="_blank">TikTok</a>
+    <a href="https://www.youtube.com/@warstreet_studios" target="_blank">YouTube</a>
+    <a href="https://www.instagram.com/warstreet_studios" target="_blank">Instagram</a>
   </div>
 </div>
 
@@ -152,14 +160,14 @@ footer{
   <div class="section-title">Experience the Feeling</div>
   <div class="slideshow">
     <div class="slides" id="slides">
-      <img src="slide1.jpg">
-      <img src="slide2.jpg">
-      <img src="slide3.jpg">
-      <img src="slide4.jpg">
-      <img src="slide5.jpg">
-      <img src="slide6.jpg">
-      <img src="slide7.jpg">
-      <img src="slide8.jpg">
+      <img src="slide1.jpg" alt="Host 1">
+      <img src="slide2.jpg" alt="Host 2">
+      <img src="slide3.jpg" alt="Host 3">
+      <img src="slide4.jpg" alt="Host 4">
+      <img src="slide5.jpg" alt="Host 5">
+      <img src="slide6.jpg" alt="Host 6">
+      <img src="slide7.jpg" alt="Host 7">
+      <img src="slide8.jpg" alt="Host 8">
     </div>
   </div>
 </div>
@@ -167,9 +175,9 @@ footer{
 <!-- VOICE.IT -->
 <div class="card">
 <h2>Voice.it Memory — $5</h2>
-<p>Single audio message. Optional cover art +$5.</p>
+<p>Single audio message. Optional cover art +$5. Best for small thoughtful gifts.</p>
 <audio controls>
-<source src="voiceit_sample.mp3" type="audio/mpeg">
+  <source src="voiceit_sample.mp3" type="audio/mpeg">
 </audio>
 <button class="pick-btn" onclick="showHosts('voiceit')">Pick Memory</button>
 <div class="host-row" id="voiceit"></div>
@@ -178,7 +186,7 @@ footer{
 <!-- STORY -->
 <div class="card">
 <h2>Story Memories — $15</h2>
-<p>Slideshow (5 images included), digital letter, audio.</p>
+<p>Slideshow (5 images included), digital letter, audio. Perfect for personal, emotional gifts.</p>
 <a href="story_sample.html" target="_blank">View Sample</a>
 <button class="pick-btn" onclick="showHosts('story')">Pick Memory</button>
 <div class="host-row" id="story"></div>
@@ -187,7 +195,7 @@ footer{
 <!-- LEGACY -->
 <div class="card">
 <h2>Legacy Video Memory — $30–$50</h2>
-<p>Video, digital letter, audio.</p>
+<p>Edited video, digital letter, audio. Premium gift for unforgettable moments.</p>
 <a href="legacy_sample.html" target="_blank">View Sample</a>
 <button class="pick-btn" onclick="showHosts('legacy')">Pick Memory</button>
 <div class="host-row" id="legacy"></div>
@@ -197,10 +205,10 @@ footer{
 <div class="card">
 <h2>Personalized Songs — $20–$50</h2>
 <audio controls>
-<source src="song1.mp3" type="audio/mpeg">
+  <source src="song1.mp3" type="audio/mpeg">
 </audio>
 <audio controls>
-<source src="song2.mp3" type="audio/mpeg">
+  <source src="song2.mp3" type="audio/mpeg">
 </audio>
 <button class="pick-btn" onclick="showHosts('songs')">Pick Memory</button>
 <div class="host-row" id="songs"></div>
@@ -209,7 +217,7 @@ footer{
 <!-- SHARED -->
 <div class="card">
 <h2>Shared Live Photo Album — $20</h2>
-<p>Live digital gallery for friends and family.</p>
+<p>Live gallery for friends/family. Any participant can upload/download photos.</p>
 <button class="pick-btn" onclick="showHosts('shared')">Pick Memory</button>
 <div class="host-row" id="shared"></div>
 </div>
@@ -223,8 +231,8 @@ Powered by WarStreet Experience Model — Shopystreet Signature
 <script>
 let slideIndex=0;
 setInterval(()=>{
-slideIndex=(slideIndex+1)%8;
-document.getElementById('slides').style.transform=`translateX(-${slideIndex*100}%)`;
+  slideIndex=(slideIndex+1)%8;
+  document.getElementById('slides').style.transform=`translateX(-${slideIndex*100}%)`;
 },3500);
 
 const hostData={
@@ -273,20 +281,20 @@ shared:20
 };
 
 function showHosts(tier){
-document.querySelectorAll('.host-row').forEach(r=>r.style.display='none');
-const row=document.getElementById(tier);
-row.innerHTML="";
-hostData[tier].forEach(h=>{
-const div=document.createElement('div');
-div.className="host-card";
-div.innerHTML=`<img src="${h.img}"><div>${h.name}<br>$${h.price}</div>`;
-div.onclick=()=>{
-const msg=`I want ${tier} Memory ($${memoryPrices[tier]}) with ${h.name} ($${h.price})`;
-window.open(`https://wa.me/263779388560?text=${encodeURIComponent(msg)}`);
-};
-row.appendChild(div);
-});
-row.style.display="flex";
+  document.querySelectorAll('.host-row').forEach(r=>r.style.display='none');
+  const row=document.getElementById(tier);
+  row.innerHTML="";
+  hostData[tier].forEach(h=>{
+    const div=document.createElement('div');
+    div.className="host-card";
+    div.innerHTML=`<img src="${h.img}" alt="${h.name}"><div>${h.name}<br>$${h.price}</div>`;
+    div.onclick=()=>{
+      const msg=`I want ${tier} Memory ($${memoryPrices[tier]}) with ${h.name} ($${h.price})`;
+      window.open(`https://wa.me/263779388560?text=${encodeURIComponent(msg)}`);
+    };
+    row.appendChild(div);
+  });
+  row.style.display="flex";
 }
 </script>
 
