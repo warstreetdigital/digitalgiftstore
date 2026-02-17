@@ -60,7 +60,7 @@ h1,h2{
 .card{
   background:#fff;
   border-radius:14px;
-  padding:35px 25px;
+  padding:45px 30px; /* increased space */
   margin-bottom:30px;
   box-shadow:0 6px 20px rgba(0,0,0,0.08);
 }
@@ -128,7 +128,7 @@ h1,h2{
 }
 audio{
   width:100%;
-  margin-top:auto;
+  margin-top:10px;
 }
 
 footer{
@@ -140,7 +140,6 @@ footer{
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero" onclick="this.classList.toggle('active')">
   <h1>WarStreet Digital Gift Store</h1>
   <div class="tagline">
@@ -155,27 +154,25 @@ footer{
 
 <div class="container">
 
-<!-- SLIDESHOW -->
 <div class="card">
   <div class="section-title">Experience the Feeling</div>
   <div class="slideshow">
     <div class="slides" id="slides">
-      <img src="slide1.jpg" alt="Host 1">
-      <img src="slide2.jpg" alt="Host 2">
-      <img src="slide3.jpg" alt="Host 3">
-      <img src="slide4.jpg" alt="Host 4">
-      <img src="slide5.jpg" alt="Host 5">
-      <img src="slide6.jpg" alt="Host 6">
-      <img src="slide7.jpg" alt="Host 7">
-      <img src="slide8.jpg" alt="Host 8">
+      <img src="slide1.jpg">
+      <img src="slide2.jpg">
+      <img src="slide3.jpg">
+      <img src="slide4.jpg">
+      <img src="slide5.jpg">
+      <img src="slide6.jpg">
+      <img src="slide7.jpg">
+      <img src="slide8.jpg">
     </div>
   </div>
 </div>
 
-<!-- VOICE.IT -->
 <div class="card">
 <h2>Voice.it Memory — $5</h2>
-<p>Single audio message. Optional cover art +$5. Best for small thoughtful gifts.</p>
+<p>A heartfelt single audio message professionally delivered. Perfect for quick emotional gifts, surprise voice notes, and meaningful personal messages.</p>
 <audio controls>
   <source src="voiceit_sample.mp3" type="audio/mpeg">
 </audio>
@@ -183,41 +180,43 @@ footer{
 <div class="host-row" id="voiceit"></div>
 </div>
 
-<!-- STORY -->
 <div class="card">
 <h2>Story Memories — $15</h2>
-<p>Slideshow (5 images included), digital letter, audio. Perfect for personal, emotional gifts.</p>
-<a href="story_sample.html" target="_blank">View Sample</a>
+<p>A powerful emotional slideshow including 5 images, custom narration, and a digital letter. Ideal for birthdays, anniversaries, and milestone celebrations.</p>
+<a href="https://rachelbirthdaymemory.pages.dev" target="_blank">View Sample</a>
 <button class="pick-btn" onclick="showHosts('story')">Pick Memory</button>
 <div class="host-row" id="story"></div>
 </div>
 
-<!-- LEGACY -->
 <div class="card">
 <h2>Legacy Video Memory — $30–$50</h2>
-<p>Edited video, digital letter, audio. Premium gift for unforgettable moments.</p>
+<p>A premium edited tribute video combining visuals, storytelling, music, and emotional narration. Designed for unforgettable life moments and special honour gifts.</p>
 <a href="legacy_sample.html" target="_blank">View Sample</a>
 <button class="pick-btn" onclick="showHosts('legacy')">Pick Memory</button>
 <div class="host-row" id="legacy"></div>
 </div>
 
-<!-- SONGS -->
 <div class="card">
 <h2>Personalized Songs — $20–$50</h2>
+<p>Custom-written and recorded songs tailored for your occasion — birthdays, roora/lobola, weddings, or corporate dedications.</p>
+
+<p><strong>Birthday Song Sample</strong></p>
 <audio controls>
   <source src="song1.mp3" type="audio/mpeg">
 </audio>
+
+<p><strong>Roora/Lobola Song Sample</strong></p>
 <audio controls>
   <source src="song2.mp3" type="audio/mpeg">
 </audio>
+
 <button class="pick-btn" onclick="showHosts('songs')">Pick Memory</button>
 <div class="host-row" id="songs"></div>
 </div>
 
-<!-- SHARED -->
 <div class="card">
 <h2>Shared Live Photo Album — $20</h2>
-<p>Live gallery for friends/family. Any participant can upload/download photos.</p>
+<p>A live digital gallery where friends and family can upload and download photos in real time. Perfect for weddings, parties, graduations, and group celebrations.</p>
 <button class="pick-btn" onclick="showHosts('shared')">Pick Memory</button>
 <div class="host-row" id="shared"></div>
 </div>
@@ -287,7 +286,7 @@ function showHosts(tier){
   hostData[tier].forEach(h=>{
     const div=document.createElement('div');
     div.className="host-card";
-    div.innerHTML=`<img src="${h.img}" alt="${h.name}"><div>${h.name}<br>$${h.price}</div>`;
+    div.innerHTML=`<img src="${h.img}"><div>${h.name}<br>$${h.price}</div>`;
     div.onclick=()=>{
       const msg=`I want ${tier} Memory ($${memoryPrices[tier]}) with ${h.name} ($${h.price})`;
       window.open(`https://wa.me/263779388560?text=${encodeURIComponent(msg)}`);
